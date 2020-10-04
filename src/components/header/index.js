@@ -16,7 +16,7 @@ export default () => {
     const toDoText = localStorage.getItem("toDoList") || "[]";
     const toDoArray = JSON.parse(toDoText);
 
-    toDoArray.push(newToDo);
+    toDoArray.unshift(newToDo);
     localStorage.setItem("toDoList", JSON.stringify(toDoArray));
 
     listContext.actions.setList(toDoArray);
@@ -27,10 +27,11 @@ export default () => {
 
   const saveTodo = (e) => {
     if (e.key === "Enter") {
-      setTopTodo(e.target.value);
+      setTopTodo(e.target.value.trim());
     }
   };
 
+  // 어떤 input 태그는 readOnly가 없어도 경고창이 나타나지 않는다??
   return (
     <header className="header">
       <h1>todos</h1>

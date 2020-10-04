@@ -1,25 +1,32 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import Todo from "./todo";
 import list from "../../context/toDoList";
 
 export default () => {
   const listContext = useContext(list);
 
-  useEffect(() => {
-    const toDoText = localStorage.getItem("toDoList") || "[]";
-    const toDoArray = JSON.parse(toDoText);
+  const setAllToDo = (e) => {
+    const newList = listContext.state.list.map((item) => {
+      return { ...item, isCompleted: e.target.checked };
+    });
 
-    // listContext.actions.setList(toDoArray);
-  }, []);
-  // 기본값으로 useEffect 두번째 인자값에 빈 배열이라도 넣는게 좋은게 아닐까?
+    localStorage.setItem("toDoList", JSON.stringify(newList));
+    listContext.actions.setList(newList);
+  };
 
   return (
     <section className="main">
-      <input id="toggle-all" className="toggle-all" type="checkbox" />
+      <input
+        id="toggle-all"
+        className="toggle-all"
+        type="checkbox"
+        checked={listContext.state.list.every((item) => item.isCompleted)}
+        onChange={setAllToDo}
+      />
       <label htmlFor="toggle-all">Mark all as complete</label>
       <ul className="todo-list">
         {listContext.state.list.map((item, index) => {
-          return <Todo key={index} item={item}></Todo>;
+          return <Todo key={index} item={item} index={index}></Todo>;
         })}
       </ul>
     </section>
