@@ -2,14 +2,17 @@ import React from "react";
 import Header from "./components/header";
 import Main from "./components/main";
 import Footer from "./components/footer";
+import { ListProvider } from "./context/toDoList";
 
 function App() {
   return (
     <div className="App">
       <section className="todoapp">
-        <Header> </Header>
-        <Main></Main>
-        <Footer />
+        <ListProvider>
+          <Header> </Header>
+          <Main></Main>
+          <Footer />
+        </ListProvider>
       </section>
 
       <footer className="info">

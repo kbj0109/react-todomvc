@@ -1,14 +1,25 @@
 import React from "react";
 
-export default () => {
+export default ({ item }) => {
+  const liClassName = item.isCompleted ? "completed" : "";
+  const completed = item.isCompleted;
+  const message = item.isCompleted
+    ? "Create a TodoMVC template"
+    : "Rule the web";
+
   return (
-    <li className="completed">
+    <li className={liClassName}>
       <div className="view">
-        <input className="toggle" type="checkbox" checked readOnly />
-        <label>Taste JavaScript</label>
+        <input
+          checked={completed}
+          className="toggle"
+          type="checkbox"
+          readOnly
+        />
+        <label>{item.title}</label>
         <button className="destroy"></button>
       </div>
-      <input className="edit" value="Create a TodoMVC template" readOnly />
+      <input className="edit" value={message} readOnly />
     </li>
   );
 };
