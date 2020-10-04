@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import list from "../../context/toDoList";
 
 export default () => {
   const listContext = useContext(list);
+
+  useEffect(() => {}, [listContext.state.list]); // 남은 ToDo 갯수를 위해
 
   const deleteCompleted = () => {
     const newList = listContext.state.list.filter(
@@ -16,7 +18,13 @@ export default () => {
   return (
     <footer className="footer">
       <span className="todo-count">
-        <strong>0</strong> item left
+        <strong>
+          {
+            listContext.state.list.filter((item) => item.isCompleted === false)
+              .length
+          }
+        </strong>{" "}
+        item left
       </span>
       <ul className="filters">
         <li>
