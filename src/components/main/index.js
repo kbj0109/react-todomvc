@@ -3,18 +3,19 @@ import Todo from "./todo";
 
 export default () => {
   return (
-    <section class="main">
-      <input id="toggle-all" class="toggle-all" type="checkbox" />
-      <label for="toggle-all">Mark all as complete</label>
-      <ul class="todo-list">
+    <section className="main">
+      <input id="toggle-all" className="toggle-all" type="checkbox" />
+      <label htmlFor="toggle-all">Mark all as complete</label>
+      <ul className="todo-list">
         <Todo></Todo>
+
         <li>
-          <div class="view">
-            <input class="toggle" type="checkbox" />
+          <div className="view">
+            <input className="toggle" type="checkbox" readOnly />
             <label>Buy a unicorn</label>
-            <button class="destroy"></button>
+            <button className="destroy"></button>
           </div>
-          <input class="edit" value="Rule the web" />
+          <input className="edit" value="Rule the web" readOnly />
         </li>
       </ul>
     </section>

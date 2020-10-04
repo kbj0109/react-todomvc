@@ -2,13 +2,13 @@ import React from "react";
 
 export default () => {
   return (
-    <li class="completed">
-      <div class="view">
-        <input class="toggle" type="checkbox" checked />
+    <li className="completed">
+      <div className="view">
+        <input className="toggle" type="checkbox" checked readOnly />
         <label>Taste JavaScript</label>
-        <button class="destroy"></button>
+        <button className="destroy"></button>
       </div>
-      <input class="edit" value="Create a TodoMVC template" />
+      <input className="edit" value="Create a TodoMVC template" readOnly />
     </li>
   );
 };

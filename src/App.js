@@ -6,13 +6,13 @@ import Footer from "./components/footer";
 function App() {
   return (
     <div className="App">
-      <section class="todoapp">
+      <section className="todoapp">
         <Header> </Header>
         <Main></Main>
-        <Footer> </Footer>
+        <Footer />
       </section>
 
-      <footer class="info">
+      <footer className="info">
         <p>Double-click to edit a todo</p>
         <p>
           Template by <a href="http://sindresorhus.com">Sindre Sorhus</a>
